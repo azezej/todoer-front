@@ -4,37 +4,31 @@ A to-do manager Vue frontend
 
 ## Install the dependencies
 ```bash
-yarn
-# or
-npm install
+bun i
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-quasar dev
+bun dev
 ```
 
 
 ### Lint the files
 ```bash
-yarn lint
-# or
-npm run lint
+bun lint
 ```
 
 
 ### Format the files
 ```bash
-yarn format
-# or
-npm run format
+bun format
 ```
 
 
 
 ### Build the app for production
 ```bash
-quasar build
+bun run build
 ```
 
 ### Customize the configuration
