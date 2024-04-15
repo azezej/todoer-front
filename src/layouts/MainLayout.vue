@@ -46,7 +46,7 @@ export default defineComponent({
 
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: true
     }
   },
 
