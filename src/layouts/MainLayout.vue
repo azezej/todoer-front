@@ -21,7 +21,8 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
-      bordered
+      no-swipe-close
+      mini
     >
       <q-list>
         <q-item>
