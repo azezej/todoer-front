@@ -2,7 +2,6 @@
   <q-expansion-item
     label="Workspace 1"
     icon="receipt_long"
-    default-opened
     class="drawer-workspace-expansion"
   >
     <div style="margin: 10px;">
@@ -11,15 +10,8 @@
     </div>
   </q-expansion-item>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import TodoItem from './TodoItem.vue';
-export default defineComponent({
-  components: { TodoItem },
-  data() {
-    return {
-      todoListIds: ['id-01', 'id-02', 'id-03'],
-    };
-  },
-});
+
+const todoListIds = ['id-01', 'id-02', 'id-03'];
 </script>

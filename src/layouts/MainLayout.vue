@@ -11,11 +11,9 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+        <q-toolbar-title> Quasar App </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <AuthDialog />
       </q-toolbar>
     </q-header>
 
@@ -32,24 +30,11 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import WorkspaceItem from './drawer/WorkspaceItem.vue';
+import AuthDialog from './auth/AuthDialog.vue';
 
-export default defineComponent({
-  name: 'MainLayout',
-  components: { WorkspaceItem },
-
-  data () {
-    return {
-      leftDrawerOpen: true
-    }
-  },
-
-  methods: {
-    toggleLeftDrawer () {
-      this.leftDrawerOpen = !this.leftDrawerOpen;
-    }
-  }
-});
+const leftDrawerOpen = ref(true);
+const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
 </script>
