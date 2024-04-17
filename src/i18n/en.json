@@ -2,5 +2,14 @@
   "yes": "Yes",
   "no": "No",
   "cancel": "Cancel",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Repeat passoword",
+    "forgot_password": "Forgot password"
+  }
 }

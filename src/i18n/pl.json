@@ -2,5 +2,14 @@
   "yes": "Tak",
   "no": "Nie",
   "cancel": "Anuluj",
-  "confirm": "Potwierdź"
+  "confirm": "Potwierdź",
+  "auth": {
+    "login": "Zaloguj",
+    "logout": "Wyloguj",
+    "register": "Zarejestruj",
+    "email": "Email",
+    "password": "Hasło",
+    "password_confirmation": "Powtórz hasło",
+    "forgot_password": "Zapomniałeś hasła"
+  }
 }
