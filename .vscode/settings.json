@@ -7,5 +7,6 @@
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.language": "en,pl",
-  "i18n-ally.localesPaths": ["src/i18n"]
+  "i18n-ally.localesPaths": ["src/i18n"],
+  "gitPrefix.pattern": ".*([a-zA-Z]{3}-\\d{1,5}).*"
 }

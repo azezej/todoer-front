@@ -76,11 +76,11 @@ const toggleNested = () => expansion.value?.toggle();
     margin-bottom: 10px;
     padding-top: 10px;
   }
-}
 
-.q-expansion-item__container {
+  .q-expansion-item__container {
   .q-item {
     display: none;
   }
+}
 }
 </style>

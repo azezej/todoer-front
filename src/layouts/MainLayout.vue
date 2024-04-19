@@ -22,13 +22,8 @@
     <q-drawer
       v-model="leftDrawerOpen"
       no-swipe-close
-      mini
     >
-      <q-list>
-        <q-item>
-          <WorkspaceItem style="width: 100%" />
-        </q-item>
-      </q-list>
+      <WorkspaceItem style="width: 100%" />
     </q-drawer>
 
     <q-page-container>

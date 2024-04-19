@@ -5,10 +5,10 @@
     default-opened
     class="drawer-workspace-expansion"
   >
-  <div style="margin: 10px;">
-    <TodoItem v-for="(item, index) in todoListIds" :key="item"
-      :todoListId="item" :devNested="index === 0" />
-  </div>
+    <div style="margin: 10px;">
+      <TodoItem v-for="(item, index) in todoListIds" :key="item"
+        :todoListId="item" :devNested="index === 0" />
+    </div>
   </q-expansion-item>
 </template>
 <script lang="ts">
