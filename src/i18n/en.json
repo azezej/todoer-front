@@ -5,8 +5,10 @@
   "confirm": "Confirm",
   "auth": {
     "login": "Login",
+    "login_action": "Already have an account?",
     "logout": "Logout",
     "register": "Register",
+    "register_action": "Don't have an account?",
     "email": "Email",
     "password": "Password",
     "password_confirmation": "Repeat passoword",

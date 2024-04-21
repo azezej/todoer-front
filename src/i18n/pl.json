@@ -16,6 +16,7 @@
       "password_confirmation": "Hasła nie są identyczne",
       "required": "To pole jest wymagane",
       "minimal_password": "Hasło musi mieć co najmniej 8 znaków"
-    }
+    },
+    "register_action": "Nie masz konta?"
   }
 }
