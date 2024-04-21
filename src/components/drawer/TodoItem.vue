@@ -52,6 +52,7 @@ const toggleNested = () => expansion.value?.toggle();
   width: 100%;
   margin-bottom: 5px;
   user-select: none;
+  cursor: pointer;
 
   &-box {
     display: flex;

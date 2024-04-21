@@ -10,6 +10,12 @@
     "email": "Email",
     "password": "Password",
     "password_confirmation": "Repeat passoword",
-    "forgot_password": "Forgot password"
+    "forgot_password": "Forgot password",
+    "errors": {
+      "email": "Invalid email address",
+      "password_confirmation": "Passwords do not match",
+      "required": "This field is required",
+      "minimal_password": "Password must be at least 8 characters long"
+    }
   }
 }

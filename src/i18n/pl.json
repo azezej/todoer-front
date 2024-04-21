@@ -10,6 +10,12 @@
     "email": "Email",
     "password": "Hasło",
     "password_confirmation": "Powtórz hasło",
-    "forgot_password": "Zapomniałeś hasła"
+    "forgot_password": "Zapomniałeś hasła",
+    "errors": {
+      "email": "Nieprawidłowy adres email",
+      "password_confirmation": "Hasła nie są identyczne",
+      "required": "To pole jest wymagane",
+      "minimal_password": "Hasło musi mieć co najmniej 8 znaków"
+    }
   }
 }

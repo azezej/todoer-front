@@ -32,9 +32,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import WorkspaceItem from './drawer/WorkspaceItem.vue';
-import AuthDialog from './auth/AuthDialog.vue';
+import WorkspaceItem from 'components/drawer/WorkspaceItem.vue';
+import AuthDialog from 'components/auth/AuthDialog.vue';
 
-const leftDrawerOpen = ref(true);
+const leftDrawerOpen = ref(false);
 const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
 </script>
