@@ -3,6 +3,11 @@
   "no": "No",
   "cancel": "Cancel",
   "confirm": "Confirm",
+  "brand": {
+    "name": "Get To It",
+    "motto": "Get things done",
+    "copyright": "© 2024 GetToIt-Team"
+  },
   "auth": {
     "login": "Login",
     "login_action": "Already have an account?",

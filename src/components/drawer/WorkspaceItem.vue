@@ -15,3 +15,10 @@ import TodoItem from './TodoItem.vue';
 
 const todoListIds = ['id-01', 'id-02', 'id-03'];
 </script>
+<style>
+.drawer-workspace-expansion {
+  .q-expansion-item__toggle-icon {
+    transition-duration: 0ms;
+  }
+}
+</style>

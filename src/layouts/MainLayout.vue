@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr fFF">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -11,7 +11,10 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title>
+          {{ $t('brand.name') }}
+          <span class="text-caption">{{ $t('brand.motto') }}</span>
+        </q-toolbar-title>
 
         <AuthDialog />
       </q-toolbar>
@@ -19,6 +22,7 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
+      class="bg-grey-1"
       no-swipe-close
     >
       <WorkspaceItem style="width: 100%" />
@@ -27,6 +31,10 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer>
+      <div class="footer-copyright">{{ $t('brand.copyright') }}</div>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -38,3 +46,11 @@ import AuthDialog from 'components/auth/AuthDialog.vue';
 const leftDrawerOpen = ref(false);
 const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
 </script>
+
+<style>
+.footer-copyright {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+</style>
