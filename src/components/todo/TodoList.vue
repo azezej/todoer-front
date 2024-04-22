@@ -10,6 +10,17 @@
         </q-item-section>
       </q-item>
     </q-list>
+    <template v-if="canEdit">
+      <q-item>
+        <q-item-section class="todo-list-new-icon" avatar>
+          <q-icon name="add"/>
+        </q-item-section>
+        <q-item-section>
+          <q-input class="todo-list-new-input"
+            v-model="newTodo.label" />
+        </q-item-section>
+      </q-item>
+    </template>
     <q-expansion-item class="bg-info rounded-borders todo-list-transition-container"
       label="Done"
       v-model="expandableOpen" :disable="expandableDisabled">
@@ -83,8 +94,25 @@ watch(doneItems, (value, oldValue) => {
   }
 });
 
+const canEdit = ref(true);
+const newTodo = reactive({
+  label: ''
+});
+
 </script>
 <style scoped lang="scss">
+.todo-list {
+  &-new {
+    &-input {
+      width: 100%;
+    }
+
+    &-icon {
+      margin-left: 7.5px;
+    }
+  }
+}
+
 .todo-enter-active,
 .todo-leave-active,
 .done-enter-active,
