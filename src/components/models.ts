@@ -3,6 +3,10 @@ export interface Todo {
   content: string;
 }
 
-export interface Meta {
-  totalCount: number;
+export interface TodoItem {
+  id: number;
+  summary: string;
+  description: string;
+  done: boolean;
+  position: number;
 }

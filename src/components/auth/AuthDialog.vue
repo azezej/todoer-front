@@ -1,7 +1,7 @@
 <template>
   <q-btn icon="person" outline @click="dialogOpen = true" />
   <q-dialog v-model="dialogOpen" persistent class="auth-dialog">
-      <q-card class="auth-dialog-container">
+      <q-card class="q-pa-lg auth-dialog-container">
         <q-card-section class="auth-dialog-title">
           <span class="text-h6">{{ isRegistering ? $t('auth.register') : $t('auth.login') }}</span>
         </q-card-section>
@@ -73,7 +73,6 @@ const validators = {
 .auth-dialog {
   &-container {
     width: 400px;
-    padding: 10px;
   }
 
   &-title {

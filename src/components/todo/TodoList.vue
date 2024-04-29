@@ -1,12 +1,12 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-px-md todo-list-container">
     <q-list padding draggable class="todo-list-transition-container">
       <q-item class="todo-list-item" tag="label" v-for="(value, index) of todoItems" :key="index">
         <q-item-section side top>
-          <q-checkbox v-model="todoItems[index].value" name="optionOne"/>
+          <q-checkbox v-model="todoItems[index].done" name="optionOne"/>
         </q-item-section>
         <q-item-section>
-          <q-item-label>{{ value.label }}</q-item-label>
+          <q-item-label>{{ value.summary }}</q-item-label>
         </q-item-section>
       </q-item>
     </q-list>
@@ -20,10 +20,10 @@
         <q-item class="todo-list-item" tag="label"
           v-for="(value, index) of doneItems" :key="index">
           <q-item-section side top>
-            <q-checkbox v-model="doneItems[index].value" name="optionOne"/>
+            <q-checkbox v-model="doneItems[index].done" name="optionOne"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label>{{ value.label }}</q-item-label>
+            <q-item-label>{{ value.summary }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -33,44 +33,50 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue';
 import NewTodoItem from './NewTodoItem.vue';
+import { TodoItem } from '../models';
 
-const items = reactive<{label: string, value: boolean, position: number}[]>([
+const items = reactive<TodoItem[]>([
   {
-    label: 'Option 1',
-    value: false,
-    position: 1
+    id: 1,
+    summary: 'Option 1',
+    done: false,
+    position: 1,
+    description: 'Description for Option 1'
   },
   {
-    label: 'Option 2',
-    value: false,
-    position: 2
+    id: 2,
+    summary: 'Option 2',
+    done: false,
+    position: 2,
+    description: 'Description for Option 2'
   },
   {
-    label: 'Option 3',
-    value: false,
-    position: 3
+    id: 3,
+    summary: 'Option 3',
+    done: false,
+    position: 3,
+    description: 'Description for Option 3'
   },
   {
-    label: 'Option 4',
-    value: false,
-    position: 4
+    id: 4,
+    summary: 'Option 4',
+    done: false,
+    position: 4,
+    description: 'Description for Option 4'
   },
   {
-    label: 'Option 5',
-    value: false,
-    position: 5
-  },
-  {
-    label: 'Option 6',
-    value: false,
-    position: 6
+    id: 5,
+    summary: 'Option 5',
+    done: false,
+    position: 5,
+    description: 'Description for Option 5'
   }
 ]);
 const todoItems = computed(() => items
-  .filter(item => !item.value)
+  .filter(item => !item.done)
   .sort((a, b) => a.position - b.position));
 const doneItems = computed(() => items
-  .filter(item => item.value)
+  .filter(item => item.done)
   .sort((a, b) => a.position - b.position));
 
 const expandableOpen = ref(false);
@@ -90,23 +96,10 @@ watch(doneItems, (value, oldValue) => {
 </script>
 <style scoped lang="scss">
 .todo-list {
-  &-new {
-    &-container {
-      margin-bottom: 5px;
-    }
-
-    &-input {
-      width: 100%;
-    }
-
-    &-icon {
-      margin-left: 5px;
-    }
-
-    &-button {
-      width: 100%;
-      height: 44px;
-    }
+  &-container {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
