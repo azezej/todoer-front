@@ -11,22 +11,7 @@
       </q-item>
     </q-list>
     <div v-if="canEdit" class="todo-list-new-container">
-      <q-field v-if="inputEnabled">
-        <q-input class="todo-list-new-input"
-          v-model="newTodo.label"
-          @keydown.escape="toggleInput" :ref="newInputRef" />
-        <template v-slot:append>
-          <q-btn class="todo-list-new-icon"
-          icon="add" color="positive" round />
-          <q-btn class="todo-list-new-icon"
-            icon="close" color="negative" round
-            @click="toggleInput" />
-        </template>
-      </q-field>
-      <div v-else>
-        <q-btn class="todo-list-new-button"
-          icon="add" color="positive" flat @click="toggleInput"></q-btn>
-      </div>
+      <new-todo-item></new-todo-item>
     </div>
     <q-expansion-item class="bg-info rounded-borders todo-list-transition-container"
       label="Done"
@@ -46,8 +31,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { nextTick } from 'vue';
 import { computed, reactive, ref, watch } from 'vue';
+import NewTodoItem from './NewTodoItem.vue';
 
 const items = reactive<{label: string, value: boolean, position: number}[]>([
   {
@@ -89,6 +74,7 @@ const doneItems = computed(() => items
   .sort((a, b) => a.position - b.position));
 
 const expandableOpen = ref(false);
+const canEdit = ref(true);
 const expandableDisabled = ref(doneItems.value.length === 0);
 watch(doneItems, (value, oldValue) => {
   if (value.length === 0) {
@@ -101,26 +87,6 @@ watch(doneItems, (value, oldValue) => {
     }
   }
 });
-
-const newInputRef = ref();
-const canEdit = ref(true);
-const inputEnabled = ref(false);
-const newTodo = reactive({
-  label: ''
-});
-
-watch(inputEnabled, (value) => {
-  if (value) {
-    nextTick(() => newInputRef.value.focus());
-  } else {
-    newTodo.label = '';
-  }
-});
-
-function toggleInput() {
-  inputEnabled.value = !inputEnabled.value;
-}
-
 </script>
 <style scoped lang="scss">
 .todo-list {
