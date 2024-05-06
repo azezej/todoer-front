@@ -1,14 +1,14 @@
 <template>
   <div class="drawer-todo-item">
     <q-card bordered flat>
-      <RouterLink :to="`/${100}`">
+      <router-link :to="`/${100}`">
         <q-card-section class="drawer-todo-item-box">
-        <div class="drawer-todo-item-label">
-          <q-icon name="check" class="drawer-todo-item-icon" />
-          {{ todoListId }}
-        </div>
-      </q-card-section>
-      </RouterLink>
+          <div class="drawer-todo-item-label">
+            <q-icon name="check" class="drawer-todo-item-icon" />
+            {{ todoListId }}
+          </div>
+        </q-card-section>
+      </router-link>
       <q-card-section class="drawer-todo-item-drop">
         <q-btn class="drawer-todo-item-drop-icon" unelevated color="secondary"
           v-if="shouldBeExpandible" :icon="dropdownIcon" @click="toggleNested" />

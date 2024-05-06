@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-            <RouterLink to="/" class="header-logo">
+            <router-link to="/" class="header-logo">
               {{ $t('brand.name') }}
               <span class="text-caption">{{ $t('brand.motto') }}</span>
-            </RouterLink>
+            </router-link>
         </q-toolbar-title>
 
         <AuthDialog />
