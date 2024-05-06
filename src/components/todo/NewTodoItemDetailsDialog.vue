@@ -7,7 +7,6 @@
   <q-dialog
     v-model="showDialog">
     <q-card class="q-pa-xl todo-list-new-details-dialog">
-
     <q-select class="q-my-sm"
       v-model="details.assignee"
       :label="$t('list.new_item.assignee')"

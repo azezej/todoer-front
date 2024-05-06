@@ -1,20 +1,22 @@
 <template>
   <div class="drawer-todo-item">
-    <q-card @click="toggleNested"
-      bordered flat>
-      <q-card-section class="drawer-todo-item-box">
-        <div class="drawer-todo-item-label">
-          <q-icon name="check" class="drawer-todo-item-icon" />
-          {{ todoListId }}
-        </div>
-        <div class="drawer-todo-item-drop-icon">
-          <q-icon v-if="shouldBeExpandible" :name="dropdownIcon" size="1rem" />
-        </div>
+    <q-card bordered flat>
+      <router-link :to="`/${100}`">
+        <q-card-section class="drawer-todo-item-box">
+          <div class="drawer-todo-item-label">
+            <q-icon name="check" class="drawer-todo-item-icon" />
+            {{ todoListId }}
+          </div>
+        </q-card-section>
+      </router-link>
+      <q-card-section class="drawer-todo-item-drop">
+        <q-btn class="drawer-todo-item-drop-icon" unelevated color="secondary"
+          v-if="shouldBeExpandible" :icon="dropdownIcon" @click="toggleNested" />
       </q-card-section>
     </q-card>
 
     <q-expansion-item v-if="shouldBeExpandible" ref="expansion" v-model="expanded">
-      <div class="drawer-todo-item-nested" toggle>
+      <div class="drawer-todo-item-nested">
         <TodoItem v-for="item in nestedTodoListIds" :key="item"
           :todoListId="item" />
       </div>
@@ -57,6 +59,7 @@ const toggleNested = () => expansion.value?.toggle();
   &-box {
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: right;
   }
 
@@ -67,9 +70,14 @@ const toggleNested = () => expansion.value?.toggle();
     align-items: baseline;
   }
 
-  &-drop-icon {
-    width: .5rem;
-    margin-left: 5px;
+  &-drop {
+    padding: 0;
+    &-icon {
+      width: 100%;
+      margin: 0;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
   }
 
   &-nested {

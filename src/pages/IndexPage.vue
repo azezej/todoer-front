@@ -1,10 +1,7 @@
 <template>
-  <q-page>
-    well, nothing's here for now
-    <TodoList/>
-  </q-page>
+nothing here
+<RouterLink to="/100">
+    Go to 100
+</RouterLink>
 </template>
-
-<script setup lang="ts">
-import TodoList from 'components/todo/TodoList.vue';
-</script>
+<script setup></script>
