@@ -1,4 +1,5 @@
 <template>
+  list id is {{ listId }}
   <div class="q-px-md todo-list-container">
     <q-list padding draggable class="todo-list-transition-container">
       <q-item class="todo-list-item" tag="label" v-for="(value, index) of todoItems" :key="index">
@@ -34,6 +35,10 @@
 import { computed, reactive, ref, watch } from 'vue';
 import NewTodoItem from './NewTodoItem.vue';
 import { TodoItem } from '../models';
+
+defineProps({
+  listId: Number,
+});
 
 const items = reactive<TodoItem[]>([
   {
