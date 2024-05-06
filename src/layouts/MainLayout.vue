@@ -12,8 +12,10 @@
         />
 
         <q-toolbar-title>
-          {{ $t('brand.name') }}
-          <span class="text-caption">{{ $t('brand.motto') }}</span>
+            <RouterLink to="/" class="header-logo">
+              {{ $t('brand.name') }}
+              <span class="text-caption">{{ $t('brand.motto') }}</span>
+            </RouterLink>
         </q-toolbar-title>
 
         <AuthDialog />
@@ -52,5 +54,11 @@ const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
+}
+
+.header-logo {
+  text-decoration: none;
+  display: block;
+  color: unset;
 }
 </style>
