@@ -15,7 +15,7 @@
       <new-todo-item></new-todo-item>
     </div>
     <q-expansion-item class="bg-info rounded-borders todo-list-transition-container"
-      label="Done"
+      :label="doneAmount"
       v-model="expandableOpen" :disable="expandableDisabled">
       <q-list padding>
         <q-item class="todo-list-item" tag="label"
@@ -35,7 +35,9 @@
 import { computed, reactive, ref, watch } from 'vue';
 import NewTodoItem from './NewTodoItem.vue';
 import { TodoItem } from '../models';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 defineProps({
   listId: Number,
 });
@@ -83,6 +85,7 @@ const todoItems = computed(() => items
 const doneItems = computed(() => items
   .filter(item => item.done)
   .sort((a, b) => a.position - b.position));
+const doneAmount = computed(() => `${t('list.done_amount', { amount: doneItems.value.length })}`);
 
 const expandableOpen = ref(false);
 const canEdit = ref(true);

@@ -1,5 +1,5 @@
 <template>
-<TodoList :id="+listId" />
+<TodoList :listId="+listId" />
 </template>
 <script setup>
 import TodoList from '../components/todo/TodoList.vue';

@@ -22,7 +22,7 @@
   </q-dialog>
 </template>
 <script setup>
-import { ref, reactive, defineProps } from 'vue';
+import { ref, reactive } from 'vue';
 
 defineProps({
   tabIndex: Number

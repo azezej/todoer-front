@@ -26,10 +26,14 @@
     }
   },
   "list": {
+    "done_amount": "Done ({amount})",
     "new_item": {
+      "summary": "Add a task",
       "description": "Description",
       "assignee": "Assignee",
-      "due_date": "Due date"
+      "due_date": "Due date",
+      "add_item": "Add item",
+      "add_sublist": "Create sublist"
     }
   }
 }
