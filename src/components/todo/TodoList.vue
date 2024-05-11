@@ -2,14 +2,7 @@
   list id is {{ listId }}
   <div class="q-px-md todo-list-container">
     <q-list padding draggable class="todo-list-transition-container">
-      <q-item class="todo-list-item" tag="label" v-for="(value, index) of todoItems" :key="index">
-        <q-item-section side top>
-          <q-checkbox v-model="todoItems[index].done" name="optionOne"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>{{ value.summary }}</q-item-label>
-        </q-item-section>
-      </q-item>
+      <TodoListItem v-for="(value, index) of items" :key="index"/>
     </q-list>
     <div v-if="canEdit" class="todo-list-new-container">
       <new-todo-item></new-todo-item>
@@ -33,9 +26,10 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue';
-import NewTodoItem from './NewTodoItem.vue';
 import { TodoItem } from '../models';
 import { useI18n } from 'vue-i18n';
+import NewTodoItem from './NewTodoItem.vue';
+import TodoListItem from './TodoListItem.vue';
 
 const { t } = useI18n();
 defineProps({
