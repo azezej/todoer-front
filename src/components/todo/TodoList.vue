@@ -1,5 +1,5 @@
 <template>
-  list id is {{ listId }}
+  list id is {{ list.id }}
   <div class="q-px-md todo-list-container">
     <q-list padding draggable class="todo-list-transition-container">
       <TodoListItem v-for="(value, index) of items" :key="index"/>
@@ -26,15 +26,15 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue';
-import { TodoItem } from '../../shared/models';
+import { List, TodoItem } from '../../shared/models';
 import { useI18n } from 'vue-i18n';
 import NewTodoItem from './NewTodoItem.vue';
 import TodoListItem from './TodoListItem.vue';
 
 const { t } = useI18n();
-defineProps({
-  listId: Number,
-});
+defineProps<{
+  list: List;
+}>();
 
 const items = reactive<TodoItem[]>([
   {

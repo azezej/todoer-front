@@ -13,6 +13,6 @@ export interface TodoItem {
 
 export interface List {
   id: number;
+  name: string;
   items: (TodoItem | List)[];
-  position?: number;
 }
