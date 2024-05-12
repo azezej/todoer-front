@@ -10,3 +10,9 @@ export interface TodoItem {
   done: true | false | 'partial';
   position: number;
 }
+
+export interface List {
+  id: number;
+  items: (TodoItem | List)[];
+  position?: number;
+}

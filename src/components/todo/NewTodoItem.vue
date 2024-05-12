@@ -57,7 +57,7 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { TodoItem } from '../models';
+import { TodoItem } from '../../shared/models';
 
 const newInputRef = ref<HTMLInputElement>();
 const inputEnabled = ref(false);

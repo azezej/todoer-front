@@ -26,7 +26,7 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue';
-import { TodoItem } from '../models';
+import { TodoItem } from '../../shared/models';
 import { useI18n } from 'vue-i18n';
 import NewTodoItem from './NewTodoItem.vue';
 import TodoListItem from './TodoListItem.vue';

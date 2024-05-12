@@ -9,7 +9,7 @@
 </q-item>
 </template>
 <script setup lang="ts">
-import { TodoItem } from '../models';
+import { TodoItem } from '../../shared/models';
 import { reactive } from 'vue';
 
 const item = reactive<TodoItem>({
