@@ -2,20 +2,13 @@
   list id is {{ listId }}
   <div class="q-px-md todo-list-container">
     <q-list padding draggable class="todo-list-transition-container">
-      <q-item class="todo-list-item" tag="label" v-for="(value, index) of todoItems" :key="index">
-        <q-item-section side top>
-          <q-checkbox v-model="todoItems[index].done" name="optionOne"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>{{ value.summary }}</q-item-label>
-        </q-item-section>
-      </q-item>
+      <TodoListItem v-for="(value, index) of items" :key="index"/>
     </q-list>
     <div v-if="canEdit" class="todo-list-new-container">
       <new-todo-item></new-todo-item>
     </div>
     <q-expansion-item class="bg-info rounded-borders todo-list-transition-container"
-      label="Done"
+      :label="doneAmount"
       v-model="expandableOpen" :disable="expandableDisabled">
       <q-list padding>
         <q-item class="todo-list-item" tag="label"
@@ -33,9 +26,12 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue';
-import NewTodoItem from './NewTodoItem.vue';
 import { TodoItem } from '../models';
+import { useI18n } from 'vue-i18n';
+import NewTodoItem from './NewTodoItem.vue';
+import TodoListItem from './TodoListItem.vue';
 
+const { t } = useI18n();
 defineProps({
   listId: Number,
 });
@@ -83,6 +79,7 @@ const todoItems = computed(() => items
 const doneItems = computed(() => items
   .filter(item => item.done)
   .sort((a, b) => a.position - b.position));
+const doneAmount = computed(() => `${t('list.done_amount', { amount: doneItems.value.length })}`);
 
 const expandableOpen = ref(false);
 const canEdit = ref(true);

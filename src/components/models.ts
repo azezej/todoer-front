@@ -7,6 +7,6 @@ export interface TodoItem {
   id: number;
   summary: string;
   description: string;
-  done: boolean;
+  done: true | false | 'partial';
   position: number;
 }
