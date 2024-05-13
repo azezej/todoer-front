@@ -3,16 +3,20 @@ export interface Todo {
   content: string;
 }
 
+export const DONE_VALUE = 'done';
+export const UNDONE_VALUE = 'undone';
+export const INDETERMINATE_VALUE = 'partial';
+export type DoneStatus = typeof DONE_VALUE | typeof UNDONE_VALUE | typeof INDETERMINATE_VALUE;
 export interface TodoItem {
   id: number;
   summary: string;
   description: string;
-  done: true | false | 'partial';
+  done: DoneStatus;
   position: number;
 }
 
 export interface List {
   id: number;
   name: string;
-  items: (TodoItem | List)[];
+  items: TodoItem[];
 }

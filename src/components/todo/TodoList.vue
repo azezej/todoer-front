@@ -1,8 +1,8 @@
 <template>
-  list id is {{ list.id }}
+  list id is {{ listId }}
   <div class="q-px-md todo-list-container">
     <q-list padding draggable class="todo-list-transition-container">
-      <TodoListItem v-for="(value, index) of items" :key="index"/>
+      <TodoListItem v-for="value of undoneItems" :key="value.id" :item="value" />
     </q-list>
     <div v-if="canEdit" class="todo-list-new-container">
       <new-todo-item></new-todo-item>
@@ -11,73 +11,28 @@
       :label="doneAmount"
       v-model="expandableOpen" :disable="expandableDisabled">
       <q-list padding>
-        <q-item class="todo-list-item" tag="label"
-          v-for="(value, index) of doneItems" :key="index">
-          <q-item-section side top>
-            <q-checkbox v-model="doneItems[index].done" name="optionOne"/>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>{{ value.summary }}</q-item-label>
-          </q-item-section>
-        </q-item>
+        <TodoListItem v-for="value of doneItems" :key="value.id" :item="value"/>
       </q-list>
     </q-expansion-item>
   </div>
 </template>
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from 'vue';
-import { List, TodoItem } from '../../shared/models';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import NewTodoItem from './NewTodoItem.vue';
 import TodoListItem from './TodoListItem.vue';
+import { useListStore } from 'src/stores/list';
 
 const { t } = useI18n();
-defineProps<{
-  list: List;
-}>();
+const listStore = useListStore();
 
-const items = reactive<TodoItem[]>([
-  {
-    id: 1,
-    summary: 'Option 1',
-    done: false,
-    position: 1,
-    description: 'Description for Option 1'
-  },
-  {
-    id: 2,
-    summary: 'Option 2',
-    done: false,
-    position: 2,
-    description: 'Description for Option 2'
-  },
-  {
-    id: 3,
-    summary: 'Option 3',
-    done: false,
-    position: 3,
-    description: 'Description for Option 3'
-  },
-  {
-    id: 4,
-    summary: 'Option 4',
-    done: false,
-    position: 4,
-    description: 'Description for Option 4'
-  },
-  {
-    id: 5,
-    summary: 'Option 5',
-    done: false,
-    position: 5,
-    description: 'Description for Option 5'
-  }
-]);
-const todoItems = computed(() => items
-  .filter(item => !item.done)
+const listId = listStore.$state.list.id;
+const items = listStore.$state.items;
+const undoneItems = computed(() => items
+  .filter(item => !(item.done === 'done'))
   .sort((a, b) => a.position - b.position));
 const doneItems = computed(() => items
-  .filter(item => item.done)
+  .filter(item => item.done === 'done')
   .sort((a, b) => a.position - b.position));
 const doneAmount = computed(() => `${t('list.done_amount', { amount: doneItems.value.length })}`);
 
@@ -90,7 +45,7 @@ watch(doneItems, (value, oldValue) => {
     expandableDisabled.value = true;
   } else {
     expandableDisabled.value = false;
-    if (todoItems.value.length === 0 || oldValue.length === 0) {
+    if (undoneItems.value.length === 0 || oldValue.length === 0) {
       expandableOpen.value = true;
     }
   }
